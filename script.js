@@ -47,7 +47,8 @@ function init() {
     for (let i = 0; i < 200; i++) {
         const x = Math.random() * canvas.width;
         const y = Math.random() * canvas.height;
-        particles.push(new Particle(x, y, 5, 'blue'));
+        const radius = Math.random() * 2;
+        particles.push(new Particle(x, y, radius, 'blue'));
     }
 }
 
