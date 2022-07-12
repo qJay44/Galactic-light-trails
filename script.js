@@ -53,12 +53,20 @@ function init() {
 }
 
 // Animation loop
+let radians = 0;
 function animate() {
     ctx.fillStyle = 'rgba(10, 10, 10, 1)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.save();
+    ctx.translate(canvas.width / 2, canvas.height / 2);
+    ctx.rotate(radians);
     particles.forEach(particle => {
         particle.update();
     });
+    ctx.restore();
+
+    radians += 0.01;
 
     requestAnimationFrame(animate)
 }
