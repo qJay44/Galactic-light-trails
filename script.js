@@ -44,9 +44,9 @@ let particles;
 function init() {
     particles = []
 
-    for (let i = 0; i < 200; i++) {
-        const x = Math.random() * canvas.width;
-        const y = Math.random() * canvas.height;
+    for (let i = 0; i < 700; i++) {
+        const x = Math.random() * canvas.width - canvas.width / 2;
+        const y = Math.random() * canvas.width - canvas.width / 2;
         const radius = Math.random() * 2;
         particles.push(new Particle(x, y, radius, 'blue'));
     }
@@ -66,7 +66,7 @@ function animate() {
     });
     ctx.restore();
 
-    radians += 0.01;
+    radians += 0.001;
 
     requestAnimationFrame(animate)
 }
