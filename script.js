@@ -48,7 +48,8 @@ function init() {
         const x = Math.random() * canvas.width - canvas.width / 2;
         const y = Math.random() * canvas.width - canvas.width / 2;
         const radius = Math.random() * 2;
-        particles.push(new Particle(x, y, radius, 'blue'));
+        const color = colors[Math.floor(Math.random() * colors.length)]
+        particles.push(new Particle(x, y, radius, color));
     }
 }
 
