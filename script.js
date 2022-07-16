@@ -18,6 +18,15 @@ addEventListener('resize', () => {
     init();
 });
 
+let mouseDown = false;
+addEventListener('mousedown', () => {
+    mouseDown = true;
+});
+
+addEventListener('mouseup', () => {
+    mouseDown = false;
+});
+
 class Particle {
     constructor(x, y, radius, color) {
         this.x = x;
@@ -57,8 +66,9 @@ function init() {
 
 // Animation loop
 let radians = 0;
+let alpha = 1;
 function animate() {
-    ctx.fillStyle = 'rgba(10, 10, 10, 1)';
+    ctx.fillStyle = `rgba(10, 10, 10, ${alpha})`;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     ctx.save();
@@ -70,6 +80,9 @@ function animate() {
     ctx.restore();
 
     radians += 0.001;
+
+    if (mouseDown && alpha >= 0.03) alpha -= 0.01;
+    else if (!mouseDown && alpha < 1) alpha += 0.01;
 
     requestAnimationFrame(animate)
 }
